@@ -183,12 +183,12 @@ function benchmarkAccuracy(): { fastApply: number; baseline: number } {
     
     // Baseline (naive string replacement - will often fail)
     const baselineResult = testCase.original.replace('return 1;', 'const x = 2;\n  return 1;');
-    const baselineSuccess = testCase.expectedIncludes.every(expected => 
+    const baselineWorked = testCase.expectedIncludes.every(expected => 
       baselineResult.includes(expected)
     );
-    if (baselineSuccess) baselineSuccess++;
+    if (baselineWorked) baselineSuccess++;
     
-    console.log(`  ${testCase.name}: FastApply=${fastSuccess ? '✅' : '❌'}, Baseline=${baselineSuccess ? '✅' : '❌'}`);
+    console.log(`  ${testCase.name}: FastApply=${fastSuccess ? '✅' : '❌'}, Baseline=${baselineWorked ? '✅' : '❌'}`);
   }
   
   const fastAccuracy = (fastApplySuccess / testCases.length) * 100;
