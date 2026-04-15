@@ -1,0 +1,54 @@
+{
+  "name": "@mcsheehy/ai-edit-sdk",
+  "version": "0.1.0",
+  "description": "Pure local SDK for AI-powered code editing - deterministic algorithms, zero API dependencies",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./edge": {
+      "import": "./dist/edge.mjs",
+      "require": "./dist/edge.js",
+      "types": "./dist/edge.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts src/edge.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts src/edge.ts --format cjs,esm --dts --watch",
+    "test": "vitest",
+    "test:core": "vitest test/core-engines.test.ts",
+    "benchmark": "tsx benchmarks/run-all.ts",
+    "benchmark:fast": "tsx benchmarks/fast-apply-benchmark.ts",
+    "benchmark:compact": "tsx benchmarks/compact-benchmark.ts",
+    "benchmark:router": "tsx benchmarks/router-benchmark.ts",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsup": "^8.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0"
+  },
+  "keywords": [
+    "ai",
+    "code-editing",
+    "fast-apply",
+    "context-compression",
+    "prompt-routing",
+    "deterministic"
+  ],
+  "author": "Daniel McSheehy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DanielMcSheehy/tachyonic"
+  }
+}
